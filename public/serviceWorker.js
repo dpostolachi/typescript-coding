@@ -220,9 +220,8 @@ const getMerchantBids = ( { id = null } ) => {
 
 // Deleting merchant by id
 const deleteMerchant = ( { id = null } ) => {
+    
     return new Promise( ( resolve ) => {
-        const transaction = DB.transaction( [ "merchants" ], "readwrite" )
-        const objectStore = transaction.objectStore( "merchants" )
 
         // Ensuring that all bids are deleted before merchant is
         getMerchantBids( { id } )
@@ -234,7 +233,11 @@ const deleteMerchant = ( { id = null } ) => {
                 const { id } = bid
                 return deleteBid( { id } )
             } ) )
+
             .then( () => {
+
+                const transaction = DB.transaction( [ "merchants" ], "readwrite" )
+                const objectStore = transaction.objectStore( "merchants" )
 
                 const request = objectStore.delete( id )
 
