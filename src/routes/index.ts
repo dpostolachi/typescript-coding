@@ -1,8 +1,14 @@
+import { ComponentClass, StatelessComponent } from 'react'
 import BidEdit from '../components/pages/bidEdit'
 import BidsList from '../components/pages/bids'
-import HomePage from '../components/pages/home'
 import MerchantEditPage from '../components/pages/merchantEdit'
-import { IRoute } from './__interface'
+import MerchantsList from '../components/pages/merchantsList'
+
+export interface IRoute {
+	path: string
+	exact?: boolean
+	component: ComponentClass | StatelessComponent | any
+}
 
 const Routes : IRoute[] = [
 	{
@@ -22,7 +28,7 @@ const Routes : IRoute[] = [
 		path: '/merchant/form',
 	},
 	{
-		component: HomePage,
+		component: MerchantsList,
 		path: '/',
 	},
 ]

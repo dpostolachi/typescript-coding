@@ -1,4 +1,4 @@
-import { IAction } from './__interface'
+import { IAction } from './interface'
 
 export default ( state: any, action: IAction ) => {
 	switch( action.type ) {
@@ -8,7 +8,7 @@ export default ( state: any, action: IAction ) => {
 		case 'FETCH_MERCHANTS_LIST_FULFILLED':
 			const { payload: { list, count } } = action
 			return { ...state, pending: false, completed: true, list, count  }
-			
+
 		default:
 			return { ...state }
 	}

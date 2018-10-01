@@ -1,4 +1,4 @@
-import { IAction } from './__interface'
+import { IAction } from './interface'
 
 export default ( state: any , action: IAction ) => {
 	switch( action.type ) {
